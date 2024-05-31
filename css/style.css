@@ -1,0 +1,17 @@
+h1{
+    text-align: center;
+}
+
+p{
+    text-align: justify;
+    left: 5px;
+}
+h2{
+    margin-bottom: 5px;
+}
+img{
+    align-self: center;
+}
+body{
+    color: #031633;
+}
