@@ -4,7 +4,8 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Ruta para servir archivos estáticos desde las carpetas raíz
+// Ruta para servir archivos estáticos desde las carpetas raíz. Si van a agregar otros archivos estaticos hay que
+// declararlos aqui mismo. 🐧
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use('/src', express.static(path.join(__dirname, 'src')));
