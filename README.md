@@ -10,7 +10,7 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local:
 
 1. Clonar el repositorio
    Clona el repositorio en tu máquina local usando el siguiente comando:
-     git clone https://github.com/tu-usuario/tu-repositorio.git
+     git clone https://github.com/IsaiGp96/SEO.git
    
 3. Instala las dependencias:
    Asegúrate de estar en el directorio raíz del proyecto y ejecuta:
