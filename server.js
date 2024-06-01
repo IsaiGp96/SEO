@@ -4,15 +4,15 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Ruta para servir archivos estáticos desde la carpeta src y sus subcarpetas
-app.use(express.static(path.join(__dirname, 'src')));
+// Ruta para servir archivos estáticos desde las carpetas raíz
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/img', express.static(path.join(__dirname, 'img')));
+app.use('/src', express.static(path.join(__dirname, 'src')));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'src', 'index.html'));
-  res.sendFile(path.join(__dirname, 'img', 'venom.png'));
-
 });
 
 app.listen(PORT, () => {
-  console.log(`Escuchando`);
+  console.log(`Escuchando en http://localhost:${PORT}`);
 });
