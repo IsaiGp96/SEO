@@ -1,13 +1,18 @@
-const express = require("express");
-const cors = require("cors")
+const express = require('express');
+const path = require('path');
 
 const app = express();
-app.use(cors())
+const PORT = process.env.PORT || 3000;
 
-app.get('/', (re, res) => {
-    return res.json("Desde el Back End");
-})
+// Ruta para servir archivos estáticos desde la carpeta src y sus subcarpetas
+app.use(express.static(path.join(__dirname, 'src')));
 
-app.listen(8081, ()=>{
-    console.log("Escuchando...")
-})
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src', 'index.html'));
+  res.sendFile(path.join(__dirname, 'img', 'venom.png'));
+
+});
+
+app.listen(PORT, () => {
+  console.log(`Escuchando`);
+});
