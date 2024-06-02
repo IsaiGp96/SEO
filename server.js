@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware para parsear el cuerpo de la solicitud como JSON
 app.use(express.json());
 
-// Ruta para servir archivos estáticos desde las carpetas raíz.
+// Ruta para servir archivos estáticos desde las carpetas raíz. 🐧
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use('/src', express.static(path.join(__dirname, 'src')));
@@ -30,7 +30,7 @@ app.post('/submit-form', [
     return res.status(400).json({ errors: errors.array() });
   }
 
-  // Aquí puedes procesar el formulario si todo es válido
+  // Aquí procesamos el formulario si todo es válido
   res.status(200).json({ message: 'Formulario enviado con éxito' });
 });
 
