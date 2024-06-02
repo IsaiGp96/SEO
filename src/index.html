@@ -43,34 +43,34 @@
         <form class="needs-validation" novalidate id="myForm">
           <div class="row ms-3 me-3 mt-3 mb-3">
             <div class="col">
-              <label for="">Nombre</label>
-              <input type="text" class="form-control form-control border-success" placeholder="Ingresa tu nombre" pattern="[A-Za-z\s]{3,}" required>
+              <label for="nombre">Nombre</label>
+              <input type="text" name="nombre" class="form-control form-control border-success" placeholder="Ingresa tu nombre" pattern="[A-Za-z\s]{3,}" required>
               <div class="invalid-feedback">Por favor, ingresa un nombre válido (solo letras y espacios).</div>
             </div>
             <div class="col">
-              <label for="">Email</label>
-              <input type="email" class="form-control form-control border-success" placeholder="Ingresa tu email" required>
+              <label for="email">Email</label>
+              <input type="email" name="email" class="form-control form-control border-success" placeholder="Ingresa tu email" required>
               <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
             </div>
           </div>
 
           <div class="row ms-3 me-3 mt-3 mb-3">
             <div class="col">
-              <label for="">Ciudad</label>
-              <input type="text" class="form-control form-control border-success" placeholder="Ingresa tu ciudad" pattern="[A-Za-z\s]{5,}" required>
+              <label for="ciudad">Ciudad</label>
+              <input type="text" name="ciudad" class="form-control form-control border-success" placeholder="Ingresa tu ciudad" pattern="[A-Za-z\s]{5,}" required>
               <div class="invalid-feedback">Por favor, ingresa una ciudad válida (solo letras y espacios).</div>
             </div>
             <div class="col">
-              <label for="">Edad</label>
-              <input type="text" class="form-control form-control border-success" placeholder="Ingresa tu edad" pattern="\d{1,3}" required>
+              <label for="edad">Edad</label>
+              <input type="text" name="edad" class="form-control form-control border-success" placeholder="Ingresa tu edad" pattern="\d{1,3}" required>
               <div class="invalid-feedback">Por favor, ingresa una edad válida (solo números).</div>
             </div>
           </div>
 
           <div class="ms-3 me-3 mt-3 mb-3">
-            <label for="" class="text-start">Escribe tu opinión</label>
+            <label for="opinion" class="text-start">Escribe tu opinión</label>
             <div class="form-floating">
-              <textarea class="form-control" placeholder="Escribe tu opinión" id="floatingTextarea2"
+              <textarea class="form-control" name="opinion" placeholder="Escribe tu opinión" id="floatingTextarea2"
                 style="height: 100px" required></textarea>
               <label for="floatingTextarea2"></label>
               <div class="invalid-feedback">Por favor, escribe tu opinión.</div>
@@ -82,12 +82,13 @@
     </div>
   </div>
 
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div class="toast shadow-lg p-3 mb-5" id="welcomeToast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+  <div class="toast-container">
+    <div class="toast" id="welcomeToast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
       <div class="toast-header">
         <img src="../img/DD.png" class="rounded mr-2" alt="Icono" style="width: 20px; height: 20px;">
         <strong class="me-auto">Notificación</strong>
         <small>Ahora</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
         Bienvenido a Diamond Dogs
@@ -110,7 +111,26 @@
             event.stopPropagation();
           } else {
             event.preventDefault(); // Prevent form submission
-            $('#welcomeToast').toast('show');
+            var formData = {
+              nombre: form.nombre.value,
+              email: form.email.value,
+              ciudad: form.ciudad.value,
+              edad: form.edad.value,
+              opinion: form.opinion.value
+            };
+            fetch('/submit-form', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(formData)
+            }).then(response => response.json()).then(data => {
+              if (data.message) {
+                $('#welcomeToast').toast('show');
+              } else if (data.errors) {
+                console.log('Errores del servidor:', data.errors);
+              }
+            }).catch(error => console.error('Error:', error));
           }
           form.classList.add('was-validated');
         }, false);
