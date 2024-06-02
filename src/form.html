@@ -82,15 +82,18 @@
     </div>
   </div>
 
+  <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div class="toast shadow-lg p-3 mb-5" id="welcomeToast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
-        <img src="../img/DD.png" class="rounded mr-2" alt="Icono" style="width: 20px; height: 20px;">
-        <strong class="me-auto">Notificación</strong>
-        <small>Ahora</small>
+        <img src="..." class="rounded me-2" alt="...">
+        <strong class="me-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
-        Bienvenido a Diamond Dogs
+        Hello, world! This is a toast message.
       </div>
     </div>
   </div>
