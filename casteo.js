@@ -1,44 +1,34 @@
-//1.     
+//1. Convertir la cadena a un número    
 function convertirCadenaANumero(cadena) {
     let numero;
-    // Convertir la cadena a un número 
     numero = Number(cadena);
     return numero;
-}
+} 
 
- 
-
-//2.     
+//2. Convertir el número a cadena    
 function convertirNumeroACadena(numero) {
     let cadena;
-    // Convertir el número a cadena    
     cadena = String(numero);
     return cadena;
 }
-
-
-//3.     
+    
+// 3. Convertir el booleano a cadena 
 function convertirBooleanoACadena(booleano) {
     let cadena;
-    // Convertir el booleano a cadena 
     cadena = String(booleano);
     return cadena;
 }
 
-
-//4.     
+//4. Convertir la cadena a booleano
 function convertirCadenaABooleano(cadena) {
-    let booleano;
-    // Convertir la cadena a booleano 
+    let booleano; 
     booleano = cadena.toLowerCase() === 'true';
     return booleano;
 }
 
-
-//5.     
+//5. Convertir el número a booleano     
 function convertirNumeroABooleano(numero) {
     let booleano;
-    // Convertir el número a booleano 
     booleano = Boolean(numero);
     return booleano;
 }
