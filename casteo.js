@@ -32,3 +32,11 @@ function convertirNumeroABooleano(numero) {
     booleano = Boolean(numero);
     return booleano;
 }
+console.log(convertirCadenaANumero('123'))
+console.log(convertirNumeroACadena(321))
+console.log(convertirBooleanoACadena(true))
+console.log(convertirCadenaABooleano('false'))
+console.log(convertirNumeroABooleano(1))
+
+
+
